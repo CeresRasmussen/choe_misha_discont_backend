@@ -19,7 +19,7 @@ const sendEmail = async (email) => {
   console.log(email);
 
   await transport.sendMail({ ...email, from: META_EMAIL });
-  console.log("Message відіслано");
+  console.log("Повідомлення надіслано");
 };
 
 module.exports = sendEmail;
