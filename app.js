@@ -1,8 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
 
-const contactsRouter = require("./routes/sendEmail");
+const sendEmail = require("./routes/email");
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 
-app.use("/sendEmail", contactsRouter);
+app.use("/sendEmail", sendEmail);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
