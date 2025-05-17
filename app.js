@@ -14,6 +14,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/sendEmail", sendEmail);
+app.use("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
