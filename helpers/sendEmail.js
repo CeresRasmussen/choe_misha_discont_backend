@@ -1,7 +1,8 @@
 const nodemailer = require("nodemailer");
+const path = require("path");
 require("dotenv").config();
 
-const { META_PASSWORD, META_EMAIL } = process.env;
+const { META_EMAIL, META_PASSWORD } = process.env;
 
 const nodemailerConfig = {
   host: "smtp.meta.ua",
@@ -16,10 +17,28 @@ const nodemailerConfig = {
 const transport = nodemailer.createTransport(nodemailerConfig);
 
 const sendEmail = async (email) => {
-  console.log(email);
+  try {
+    console.log("Надсилаємо лист:", email);
 
-  await transport.sendMail({ ...email, from: META_EMAIL });
-  console.log("Повідомлення надіслано");
+    const message = {
+      ...email,
+      from: `"АТ «Чернівціобленерго»" <${META_EMAIL}>`,
+      attachments: email.attachments || [
+        {
+          filename: "logo.png",
+          path: path.join(__dirname, "../public/logo.png"),
+          cid: "logo@inline",
+        },
+      ],
+    };
+
+    await transport.sendMail(message);
+
+    console.log("✅ Повідомлення надіслано успішно");
+  } catch (error) {
+    console.error("❌ Помилка при надсиланні листа:", error);
+    throw error;
+  }
 };
 
 module.exports = sendEmail;
