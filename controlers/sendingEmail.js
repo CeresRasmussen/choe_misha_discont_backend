@@ -3,8 +3,8 @@ const { controllerWrapper, sendEmail } = require("../helpers/index");
 const sendingEmail = async (req, res, next) => {
   const { name, comment } = req.body;
   let emailText = {
-    to: "com@oe.cv.ua",
-    // to: "sobkowowa@gmail.com",
+    // to: "com@oe.cv.ua",
+    to: "sobkowowa@gmail.com",
     subject: "Пропозиції для АТ «Чернівціобленерго»",
     text: "",
   };
