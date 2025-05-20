@@ -4,7 +4,7 @@ const sendingEmail = async (req, res, next) => {
   const { name, comment } = req.body;
 
   const emailText = {
-    to: "com@oe.cv.ua",
+    to: "sakal@oe.cv.ua",
     // "sobkowowa@gmail.com",
     subject: "Пропозиції для АТ «Чернівціобленерго»",
     html: `
