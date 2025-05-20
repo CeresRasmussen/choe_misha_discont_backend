@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use("/sendEmail", sendEmail);
 app.use("/ping", (req, res) => {
+  console.log("pong");
   res.status(200).send("pong");
 });
 

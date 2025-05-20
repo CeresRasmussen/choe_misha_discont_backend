@@ -5,7 +5,7 @@ const sendingEmail = async (req, res, next) => {
 
   const emailText = {
     to: "sakal@oe.cv.ua",
-    // "sobkowowa@gmail.com",
+    // to: "sobkowowa@gmail.com",
     subject: "Пропозиції для АТ «Чернівціобленерго»",
     html: `
   <div style="font-family: Arial, sans-serif; color: #ffffff; padding: 20px; background: linear-gradient(90deg, rgb(21, 21, 29) 0%, rgb(25, 23, 58) 100%); color: #ffffff;">
@@ -13,11 +13,13 @@ const sendingEmail = async (req, res, next) => {
 
     <h2 style="color: #ffffff; margin-top: 0;">Пропозиція для АТ «Чернівціобленерго»</h2>
 
-    <p style="font-size: 16px;">
-      <strong>${name || "Анонімний користувач"}</strong> залишив(ла) наступний коментар:
+    <p style="font-size: 16px;color: #ffffff">
+      <strong style="color: #ffffff">${
+        name || "Анонімний користувач"
+      }</strong> залишив(ла) наступний коментар:
     </p>
 
-    <blockquote style="font-size: 16px; border-left: 4px solid coral; margin: 10px 0; padding-left: 10px;">
+    <blockquote style="font-size: 16px;color: #ffffff; border-left: 4px solid coral; margin: 10px 0; padding-left: 10px;">
       ${comment}
     </blockquote>
 
